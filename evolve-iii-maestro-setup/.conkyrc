@@ -72,6 +72,8 @@ ${font Arial:size=12}${if_running piardopc}${color green}ARDOP ACTIVE${else}${co
 ${alignr}${if_running rigctld}${color green}RIGCTL ACTIVE${else}${color red}RIGCTL OFF$endif
 ${if_running kissattach}${color green}KISSATCH ACTIVE${else}${color red}KISSATCH OFF$endif \
 ${alignr}${if_running direwolf}${color green}DIREWOLF ACTIVE${else}${color red}DIREWOLF OFF$endif
+${if_running c:\VARA FM\VARAFM.exe}${color green}VARA FM ACTIVE${else}${color red}VARA FM OFF$endif \
+${alignr}${if_running c:\VARA\VARA.exe}${color green}VARA HF ACTIVE${else}${color red}VARA HF OFF$endif
 
 ${font Arial:bold:size=14}${color Yellow}DIGITAL APPS ${color DarkSlateGray}${hr 2}
 ${font Arial:size=12}${if_running js8call}${color green}JS8 ACTIVE${else}${color red}JS8 OFF$endif \
