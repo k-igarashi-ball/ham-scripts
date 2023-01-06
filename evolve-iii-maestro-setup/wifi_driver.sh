@@ -16,15 +16,17 @@ for package in ${packages[@]}; do
     fi
 done
 
-cd $HOME/Downloads
+cd $HOME
 
-if [ ! -d "$HOME/Downloads/rtl8723du" ]
+if [ ! -d "$HOME/rtl8723du" ]
 then
     sh -c "$(git clone https://github.com/lwfinger/rtl8723du.git)"
+    cd rtl8723du
+else
+    cd rtl8723du
+    git pull
 fi
 
-cd rtl8723du
-git pull
 make clean
 make
 sudo make install
