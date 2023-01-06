@@ -19,7 +19,6 @@ for package in ${packages[@]}; do
         exit 1
     fi
 done
-
 # Download Hamlib
 wget -P $HOME/Downloads "https://github.com/Hamlib/Hamlib/releases/download/${hamlib_version}/hamlib-${hamlib_version}.tar.gz"
 
@@ -57,14 +56,14 @@ for package in ${packages[@]}; do
 done
 
 #Get and install flxml
-wget -P $HOME/Downloads  "http://www.w1hkj.com/files/flxmlrpc/flxmlrpc-${flxml_version)}.tar.gz"
+wget -P $HOME/Downloads  "http://www.w1hkj.com/files/flxmlrpc/flxmlrpc-${flxml_version}.tar.gz"
 
 # Check that it downloaded 
-if [ -f "$HOME/Downloads/flxmlrpc-${flxml_version)}.tar.gz" ]
+if [ -f "$HOME/Downloads/flxmlrpc-${flxml_version}.tar.gz" ]
 then 
     cd $HOME/Downloads
-    tar -xzvf flxmlrpc-${flxml_version)}.tar.gz
-    cd flxmlrpc-${flxml_version)}
+    tar -xzvf flxmlrpc-${flxml_version}.tar.gz
+    cd flxmlrpc-${flxml_version}
 
     ./configure --prefix=/usr/local --enable-static
     make
@@ -72,7 +71,7 @@ then
     sudo ldconfig
 
     # Clean up flxml files
-    rm -rf $HOME/Downloads/flxmlrpc-${flxml_version)}.tar.gz $HOME/Downloads/flxmlrpc-${flxml_version)}
+    rm -rf $HOME/Downloads/flxmlrpc-${flxml_version}.tar.gz $HOME/Downloads/flxmlrpc-${flxml_version}
 else
     echo "FLXML archive failed to download - does not exist"
     exit 1;
@@ -83,8 +82,8 @@ wget -P $HOME/Downloads "http://www.w1hkj.com/files/flrig/flrig-${flrig_version}
 if [ -f "$HOME/Downloads/flrig-${flrig_version}.tar.gz" ]
 then 
     cd $HOME/Downloads
-    tar -xzvf flrig-${flrig_version)}.tar.gz
-    cd flrig-${flrig_version)}
+    tar -xzvf flrig-${flrig_version}.tar.gz
+    cd flrig-${flrig_version}
 
     ./configure --prefix=/usr/local --enable-static
     make
@@ -92,22 +91,8 @@ then
     sudo ldconfig
 
     # Clean up flxml files
-    rm -rf $HOME/Downloads/flrig-${flrig_version)}.tar.gz $HOME/Downloads/flrig-${flrig_version)}
+    rm -rf $HOME/Downloads/flrig-${flrig_version}.tar.gz $HOME/Downloads/flrig-${flrig_version}
 else
     echo "FLRIG archive failed to download - does not exist"
     exit 1;
 fi 
-
-#Install GPS 
-packages=(python3-gps gpsd-clients gpsd chrony python3-gi-cairo libgps-dev)
-for package in ${packages[@]}; do
-    echo "Installing $package"
-    sudo apt install -y $package
-    if [ ! $? -eq 0 ]; then
-        echo "Installing $package failed"
-        exit 1
-    fi
-done
-
-chrony_string="refclock SHM 0 offset 0.5 delay 0.2 refid NMEA"
-sudo echo $chrony_string >> /etc/chrony/chrony.conf

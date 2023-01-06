@@ -19,8 +19,8 @@ for package in ${packages[@]}; do
 done
 
 # Add user to group
-sudo usermod -a -G tty $user
-sudo usermod -a -G dialout $user
+sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
 
 # Switch shell to zsh 
 chsh -s $(which zsh)
