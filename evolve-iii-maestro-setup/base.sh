@@ -7,7 +7,7 @@ sudo apt autoremove -y
 
 # Install core tools
 
-packages=(neovim wget curl htop zsh python3-pip fonts-powerline)
+packages=(neovim wget curl htop zsh python3-pip fonts-powerline fido2-tools software-properties-common yubikey-manager yubikey-manager-qt scdaemon pcscd)
 
 for package in ${packages[@]}; do
     echo "Installing $package"
