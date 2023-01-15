@@ -5,7 +5,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 #Install GPS 
-packages=(ax25-tools ax25-apps libasound2-dev cmake libudev-dev yad)
+packages=(jq ax25-tools ax25-apps libasound2-dev cmake libudev-dev yad)
 for package in ${packages[@]}; do
     echo "Installing $package"
     sudo apt install -y $package
@@ -32,7 +32,6 @@ cmake ..
 make -j 4
 sudo make install
 make install-conf
-<<hold
 
 ## Install ax.5
 # /etc/ax25/axports
@@ -87,4 +86,3 @@ else
 	git pull
 fi
 
-hold
