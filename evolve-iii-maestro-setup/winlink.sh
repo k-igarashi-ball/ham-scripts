@@ -77,7 +77,7 @@ fi
 cd $HOME
 if [ ! -d "$HOME/patmenu2" ]
 then
-	sh -c "$(git clone https://github.com/km4ack/patmenu2.git)"
+	sh -c "$(git clone https://github.com/k-igarashi-ball/patmenu2.git)"
 	cd $HOME/patmenu2
 	git checkout x86-dev
 else
@@ -85,4 +85,5 @@ else
 	git checkout x86-dev
 	git pull
 fi
+bash setup
 
